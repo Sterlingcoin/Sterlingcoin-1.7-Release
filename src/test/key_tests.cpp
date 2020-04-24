@@ -1,6 +1,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include <string>
+#include <iostream>
 #include <vector>
 
 #include "key.h"
@@ -8,22 +9,39 @@
 #include "uint256.h"
 #include "util.h"
 
+#define KEY_TESTS_DUMPINFO 1
+
 using namespace std;
 
-static const string strSecret1     ("5HxWvvfubhXpYYpS3tJkw6fq9jE9j18THftkZjHHfmFiWtmAbrj");
-static const string strSecret2     ("5KC4ejrDjv152FGwP386VD1i2NYc5KkfSMyv1nGy1VGDxGHqVY3");
-static const string strSecret1C    ("Kwr371tjA9u2rFSMZjTNun2PXXP3WPZu2afRHTcta6KxEUdm1vEw");
-static const string strSecret2C    ("L3Hq7a8FEQwJkW1M2GNKDW28546Vp5miewcCzSqUD9kCAXrJdS3g");
-static const CBitcoinAddress addr1 ("1QFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ");
-static const CBitcoinAddress addr2 ("1F5y5E5FMc5YzdJtB9hLaUe43GDxEKXENJ");
-static const CBitcoinAddress addr1C("1NoJrossxPBKfCHuJXT4HadJrXRE9Fxiqs");
-static const CBitcoinAddress addr2C("1CRj2HyM1CXWzHAXLQtiGLyggNT9WQqsDs");
+static const string strSecret1     ("7RjtfBG7CyxYW6bSB9v38ntheNr3zemn9sZLLR8DqJBd7WWxawZ");
+static const string strSecret2     ("7S74kTyXtxGqRB7EkyFNuKBcfZAYZJ6ZfjykKzw92EWRbV2RNtw");
+static const string strSecret1C    ("VHkEeULJDXWmv7DcPpgGndZFU7cMgyNB6wFwEJZmaEz7P6jyBsNP");
+static const string strSecret2C    ("VPaV4ajusL5VyZzZ9XVsRjfKZvC537hXN82WXeSagG2tJuTGpzQ6");
+static const CBitcoinAddress addr1 ("Sb6RkwzpNv9SpAiwfnqteUt8Cjv6NmsEvw");
+static const CBitcoinAddress addr2 ("SRdvx8idw8ZsJRYGn3JimG6jJ6z2Cyugst");
+static const CBitcoinAddress addr1C("Sfjhu5XqVgxz52DXdh2vRMijBydVp2UnGE");
+static const CBitcoinAddress addr2C("Sfa8kGvBcjmossqtB8R7EcJvgEwSDXG4i6");
 
 
 static const string strAddressBad("1HV9Lc3sNHZxwj4Zk6fB38tEmBryq2cBiF");
 
 
 #ifdef KEY_TESTS_DUMPINFO
+
+
+// void importprivkey(std::string secretkeybase58)
+// {
+//     string strSecret = params[0].get_str();
+//     CBitcoinSecret vchSecret;
+//     bool fGood = vchSecret.SetString(strSecret);
+//     CKey key;
+//     bool fCompressed;
+//     CSecret secret = vchSecret.GetSecret(fCompressed);
+//     key.SetSecret(secret, fCompressed);
+//     CKeyID vchAddress = key.GetPubKey().GetID();
+// }
+
+
 void dumpKeyInfo(uint256 privkey)
 {
     CSecret secret;
@@ -43,9 +61,9 @@ void dumpKeyInfo(uint256 privkey)
         printf("    * secret (base58): %s\n", bsecret.ToString().c_str());
         CKey key;
         key.SetSecret(secret, fCompressed);
-        vector<unsigned char> vchPubKey = key.GetPubKey();
+        vector<unsigned char> vchPubKey = key.GetPubKey().Raw();
         printf("    * pubkey (hex): %s\n", HexStr(vchPubKey).c_str());
-        printf("    * address (base58): %s\n", CBitcoinAddress(vchPubKey).ToString().c_str());
+        printf("    * address (base58): %s\n", CBitcoinAddress(HexStr(vchPubKey)).ToString().c_str());
     }
 }
 #endif
@@ -67,13 +85,20 @@ BOOST_AUTO_TEST_CASE(key_test1)
     BOOST_CHECK(fCompressed == false);
     CSecret secret2  = bsecret2.GetSecret (fCompressed);
     BOOST_CHECK(fCompressed == false);
+
     CSecret secret1C = bsecret1C.GetSecret(fCompressed);
     BOOST_CHECK(fCompressed == true);
     CSecret secret2C = bsecret2C.GetSecret(fCompressed);
     BOOST_CHECK(fCompressed == true);
 
     BOOST_CHECK(secret1 == secret1C);
+    // std::string s(secret1, sizeof(secret1));
+    // std::cout << "Secret:  " << std::hex << secret1 << std::endl;
+    // dumpKeyInfo(secret1);
+    // dumpKeyInfo(secret1C);
     BOOST_CHECK(secret2 == secret2C);
+    // dumpKeyInfo(secret2);
+    // dumpKeyInfo(secret2C);
 
     CKey key1, key2, key1C, key2C;
     key1.SetSecret(secret1, false);

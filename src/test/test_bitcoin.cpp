@@ -4,6 +4,17 @@
 #include "db.h"
 #include "main.h"
 #include "wallet.h"
+#include "util.h"
+#include "checkpoints.h"
+
+/* All unresolved externs of init.cpp */
+unsigned int nMinerSleep = 2000;
+bool fEnforceCanonical = true;
+bool fUseFastIndex = false;
+enum Checkpoints::CPMode CheckpointsMode;
+unsigned int nNodeLifespan = 7;
+unsigned int nDerivationMethodIndex = 1;
+bool fConfChange = false;
 
 CWallet* pwalletMain;
 CClientUIInterface uiInterface;

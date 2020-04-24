@@ -116,8 +116,11 @@ protected:
 
 
 public:
+    /*
     void SetCompressedPubKey();
     void SetUnCompressedPubKey();
+    */
+    void SetCompressedPubKey(bool fCompressed = true);
     EC_KEY* GetECKey();
     
     void Reset();
