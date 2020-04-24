@@ -1,6 +1,6 @@
 ![Alt text](src/qt/res/images/Wallet_Logo.png)
 
-Sterlingcoin Version 1.6.2.0 Release
+Sterlingcoin Version 1.7.0.0 Development
 
 Sterlingcoin integration/staging tree
 ================================

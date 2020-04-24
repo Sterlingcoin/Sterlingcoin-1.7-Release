@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2014-2017 The Sterlingcoin developers
+// Copyright (c) 2014-2012 The Sterlingcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -53,6 +53,7 @@ namespace Checkpoints
         (1000000, uint256("0xa4a7722e8fe87c5e72f3730916dda33ee2151f27e44daffd6d9b24d078427c26") )
         (1020000, uint256("0xac03a7195e81228dcb5deb1c413a63cec23fc52d8fc685665802cc709ed24dac") )
         (1336963, uint256("0x836563a64ab04b8f812ef70dfaa7942fb2c449facf463c1f68f513eb620df294") )
+        (1434874, uint256("0x3857dcdbb2092a6fed7304a68d3cb532e08a538be33e219a5aff1f9ce54e2829") )
     ;
 
     // TestNet has no checkpoints
