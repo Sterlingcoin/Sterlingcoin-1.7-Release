@@ -80,8 +80,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     rpcConsole(0),
     nWeight(0)
 {
-    resize(960, 640);
-    setWindowTitle(tr("Sterlingcoin") + " - " + tr("Wallet"));
+    this->setMaximumSize(860,640);
+    resize(860, 640);
+    setWindowTitle("Sterlingcoin v1.7");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/sterlingcoin"));
     setWindowIcon(QIcon(":icons/sterlingcoin"));
@@ -89,6 +90,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
+
     // Accept D&D of URIs
     setAcceptDrops(true);
 
@@ -114,7 +116,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     sendCoinsPage = new SendCoinsDialog(this);
     receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
-    
+
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
     transactionView = new TransactionView(this);
@@ -140,6 +142,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QFrame *frameBlocks = new QFrame();
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+    frameBlocks->setFrameStyle(QFrame::Plain);
+    frameBlocks->setFrameShape(QFrame::NoFrame);
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
@@ -185,6 +189,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         }
     }
 
+    statusBar()->setStyleSheet("background: transparent;");
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
@@ -358,8 +363,9 @@ void BitcoinGUI::createMenuBar()
 
 void BitcoinGUI::createToolBars()
 {
-    QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
-    toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    QToolBar *toolbar = addToolBar(tr("Toolbar"));
+    toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon );
+    toolbar->setMovable(false);
     toolbar->addAction(overviewAction);
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(sendCoinsAction);
@@ -367,6 +373,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(addressBookAction);
     toolbar->addAction(blockAction);
     toolbar->addAction(exportAction);
+    toolbar->setStyleSheet("color: rgb(138,138,138); background: transparent; color: rgb(255,255,255);");
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
@@ -541,7 +548,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
 
         if (strStatusBarWarnings.isEmpty())
         {
-            progressBarLabel->setText(tr("Synchronizing with network..."));
+            progressBarLabel->setText(tr("Synchronizing with the Sterlingcoin network..."));
             progressBarLabel->setVisible(true);
             progressBar->setFormat(tr("~%n block(s) remaining", "", nRemainingBlocks));
             progressBar->setMaximum(nTotalBlocks);

@@ -457,13 +457,13 @@ void HelpMessageBox::showOrPrint()
 void SetGreyThemeQSS(QApplication& app)
 {
     app.setStyleSheet("QTableView { color: rgb(255,255,255);  background-color: rgb(138,138,138); gridline-color: rgb(90,104,118); }"
-                      "QWidget        { background: url(:/images/bridge); color: rgb(138,138,138); }"
+                      "QWidget      { background: url(:/images/big_ben); color: rgb(138,138,138); }"
                       "QCheckBox      { color: rgb(255,255,255);  background-color: rgb(138,138,138); }"
                       "QComboBox QAbstractItemView::item { color: rgb(255,255,255); }"
                       "QPushButton    { background: transparent; color: rgb(255,255,255); }"
                       "QMenuBar       { background: transparent; color: rgb(255,255,255); }"
                       "QMenu          { background: transparent; color: rgb(255,255,255); }"
-                      "QMenuBar::item { background-color: rgb(178,178,178);}"
+                      "QMenuBar::item { background: transparent; }"
                       "QMenu::item:selected { background-color: rgb(138,138,138); }"
                       "QTreeView::item { background-color: rgb(138,138,138); }"
                       "QTreeView::item:selected { background-color: rgb(138,138,138); }"
@@ -484,4 +484,3 @@ void SetGreyThemeQSS(QApplication& app)
 }
 
 } // namespace GUIUtil
-

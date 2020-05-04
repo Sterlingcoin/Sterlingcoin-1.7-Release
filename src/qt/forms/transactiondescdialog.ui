@@ -10,6 +10,12 @@
     <height>327</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="palette">
    <palette>
     <active>
@@ -445,10 +451,10 @@
         </colorrole>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -471,20 +477,20 @@
          </brush>
         </colorrole>
         <colorrole role="Base">
-         <brush brushstyle="SolidPattern">
+         <brush brushstyle="NoBrush">
           <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -519,10 +525,10 @@
         </colorrole>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -545,20 +551,20 @@
          </brush>
         </colorrole>
         <colorrole role="Base">
-         <brush brushstyle="SolidPattern">
+         <brush brushstyle="NoBrush">
           <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -593,10 +599,10 @@
         </colorrole>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -619,20 +625,20 @@
          </brush>
         </colorrole>
         <colorrole role="Base">
-         <brush brushstyle="SolidPattern">
+         <brush brushstyle="NoBrush">
           <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>138</red>
-           <green>138</green>
-           <blue>138</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -662,7 +668,8 @@
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(138,138,138);
-color: rgb(255,255,255);</string>
+color: rgb(255,255,255);
+background: transparent;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
