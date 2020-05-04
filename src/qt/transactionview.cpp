@@ -119,6 +119,7 @@ TransactionView::TransactionView(QWidget *parent) :
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     view->setTabKeyNavigation(false);
     view->setContextMenuPolicy(Qt::CustomContextMenu);
+    view->setStyleSheet("background: transparent; color: rgb(255,255,255); border: none;");
 
     transactionView = view;
 
@@ -169,7 +170,7 @@ void TransactionView::setModel(WalletModel *model)
         transactionProxyModel->setSortRole(Qt::EditRole);
 
         transactionView->setModel(transactionProxyModel);
-        transactionView->setAlternatingRowColors(true);
+        transactionView->setAlternatingRowColors(false);
         transactionView->setSelectionBehavior(QAbstractItemView::SelectRows);
         transactionView->setSelectionMode(QAbstractItemView::ExtendedSelection);
         transactionView->setSortingEnabled(true);
