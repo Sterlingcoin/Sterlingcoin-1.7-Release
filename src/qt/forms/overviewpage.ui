@@ -2341,9 +2341,9 @@ color: rgb(255,255,255);</string>
   <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>450</x>
      <y>20</y>
-     <width>421</width>
+     <width>441</width>
      <height>511</height>
     </rect>
    </property>
