@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
+    <width>829</width>
     <height>400</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>829</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="palette">
    <palette>
@@ -497,6 +503,12 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>790</width>
+              <height>16777215</height>
+             </size>
             </property>
             <property name="palette">
              <palette>
@@ -3634,8 +3646,8 @@ color: rgb(255,255,255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>832</width>
-        <height>156</height>
+        <width>811</width>
+        <height>174</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
