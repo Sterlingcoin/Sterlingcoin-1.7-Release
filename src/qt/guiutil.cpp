@@ -475,9 +475,9 @@ void SetGreyThemeQSS(QApplication& app)
                       "QComboBox QAbstractItemView::item { color: rgb(255,255,255); }"
                       "QRadioButton   { color: rgb(255,255,255); }"
                       "QLabel         { color: rgb(255,255,255); }"
-                      "QTabBar::tab   { color: rgb(255,255,255); border: 1px solid rgb(90,104,118); border-bottom: none; padding: 5px; }"
-                      "QTabBar::tab:selected  { background-color: rgb(178,178,178); }"
-                      "QTabBar::tab:!selected { background-color: rgb(138,138,138); margin-top: 2px; }"
+                      "QTabBar::tab   { background: transparent; border: 1px solid rgb(90,104,118); border-bottom: none; padding: 5px; }"
+                      "QTabBar::tab:selected  { color: rgb(255,255,255); }"
+                      "QTabBar::tab:!selected { color: rgb(178,178,178); margin-top: 2px; }"
                       );
 }
 
