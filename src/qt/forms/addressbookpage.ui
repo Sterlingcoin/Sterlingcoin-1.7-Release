@@ -1317,7 +1317,7 @@
       <string>Double-click to edit address or label</string>
      </property>
      <property name="styleSheet">
-      <string notr="true">background:transparent;</string>
+      <string notr="true">background:transparent;color:white;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
