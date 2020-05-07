@@ -2716,6 +2716,18 @@ color: rgb(255,255,255);</string>
                </item>
                <item row="0" column="1">
                 <widget class="QLabel" name="labelCoinControlAfterFee">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>150</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
                  <property name="palette">
                   <palette>
                    <active>
@@ -2990,6 +3002,18 @@ color: rgb(255,255,255);</string>
                </item>
                <item row="1" column="1">
                 <widget class="QLabel" name="labelCoinControlChange">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>150</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
                  <property name="palette">
                   <palette>
                    <active>
@@ -3632,6 +3656,12 @@ color: rgb(255,255,255);</string>
    </item>
    <item>
     <widget class="QScrollArea" name="scrollArea">
+     <property name="maximumSize">
+      <size>
+       <width>790</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -3646,7 +3676,7 @@ color: rgb(255,255,255);</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>811</width>
+        <width>790</width>
         <height>174</height>
        </rect>
       </property>
