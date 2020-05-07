@@ -1497,8 +1497,7 @@
         <string>Choose address from address book</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(178,178,178);
-color: rgb(255,255,255);</string>
+        <string notr="true">background: transparent;</string>
        </property>
        <property name="text">
         <string/>
@@ -1518,8 +1517,7 @@ color: rgb(255,255,255);</string>
         <string>Paste address from clipboard</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(178,178,178);
-color: rgb(255,255,255);</string>
+        <string notr="true">background: transparent;</string>
        </property>
        <property name="text">
         <string/>
@@ -1539,8 +1537,7 @@ color: rgb(255,255,255);</string>
         <string>Remove this recipient</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(178,178,178);
-color: rgb(255,255,255);</string>
+        <string notr="true">background: transparent;</string>
        </property>
        <property name="text">
         <string/>
