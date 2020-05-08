@@ -540,7 +540,7 @@ bool AppInit2()
 
     // ********************************************************* Step 5: verify database integrity
 
-    uiInterface.InitMessage(_("Verifying database integrity..."));
+    uiInterface.InitMessage(_("<font style='color:red;'>Verifying database integrity...</font>"));
 
     if (!bitdb.Open(GetDataDir()))
     {
@@ -711,7 +711,7 @@ bool AppInit2()
         return false;
     }
 
-    uiInterface.InitMessage(_("Loading block index..."));
+    uiInterface.InitMessage(_("<font style='color:red;'>Loading block index...</font>"));
     printf("Loading block index...\n");
     nStart = GetTimeMillis();
     if (!LoadBlockIndex())
@@ -760,18 +760,18 @@ bool AppInit2()
     // ********************************************************* Step 8: load wallet
 
     if (GetBoolArg("-zapwallettxes", false)) {
-         uiInterface.InitMessage(_("Zapping all transactions from wallet..."));
+         uiInterface.InitMessage(_("<font style='color:red;'>Zapping all transactions from wallet...</font>"));
          pwalletMain = new CWallet(strWalletFileName);
          DBErrors nZapWalletRet = pwalletMain->ZapWalletTx();
          if (nZapWalletRet != DB_LOAD_OK) {
-             uiInterface.InitMessage(_("Error loading wallet.dat: Wallet corrupted"));
+             uiInterface.InitMessage(_("<font style='color:red;'>Error loading wallet.dat: Wallet corrupted</font>"));
              return false;
          }
          delete pwalletMain;
          pwalletMain = NULL;
     }
 
-    uiInterface.InitMessage(_("Loading wallet..."));
+    uiInterface.InitMessage(_("<font style='color:red;'>Loading wallet...</font>"));
     printf("Loading wallet...\n");
     nStart = GetTimeMillis();
     bool fFirstRun = true;
@@ -845,7 +845,7 @@ bool AppInit2()
     }
     if (pindexBest != pindexRescan && pindexBest && pindexRescan && pindexBest->nHeight > pindexRescan->nHeight)
     {
-        uiInterface.InitMessage(_("Rescanning..."));
+        uiInterface.InitMessage(_("<font style='color:red;'>Rescanning...</font>"));
         printf("Rescanning last %i blocks (from block %i)...\n", pindexBest->nHeight - pindexRescan->nHeight, pindexRescan->nHeight);
         nStart = GetTimeMillis();
         pwalletMain->ScanForWalletTransactions(pindexRescan, true);
@@ -856,7 +856,7 @@ bool AppInit2()
 
     if (mapArgs.count("-loadblock"))
     {
-        uiInterface.InitMessage(_("Importing blockchain data file."));
+        uiInterface.InitMessage(_("<font style='color:red;'>Importing blockchain data file.</font>"));
 
         BOOST_FOREACH(string strFile, mapMultiArgs["-loadblock"])
         {
@@ -869,7 +869,7 @@ bool AppInit2()
 
     filesystem::path pathBootstrap = GetDataDir() / "bootstrap.dat";
     if (filesystem::exists(pathBootstrap)) {
-        uiInterface.InitMessage(_("Importing bootstrap blockchain data file."));
+        uiInterface.InitMessage(_("<font style='color:red;'>Importing bootstrap blockchain data file.</font>"));
 
         FILE *file = fopen(pathBootstrap.string().c_str(), "rb");
         if (file) {
@@ -881,7 +881,7 @@ bool AppInit2()
 
     // ********************************************************* Step 10: load peers
 
-    uiInterface.InitMessage(_("Loading addresses..."));
+    uiInterface.InitMessage(_("<font style='color:red;'>Loading addresses...</font>"));
     printf("Loading addresses...\n");
     nStart = GetTimeMillis();
 
@@ -917,7 +917,7 @@ bool AppInit2()
 
     // ********************************************************* Step 12: finished
 
-    uiInterface.InitMessage(_("Done loading"));
+    uiInterface.InitMessage(_("<font style='color:green;'>Done loading</font>"));
     printf("Done loading\n");
 
     if (!strErrors.str().empty())

@@ -891,6 +891,7 @@ color: rgb(255,255,255);</string>
           <pointsize>14</pointsize>
           <weight>75</weight>
           <bold>true</bold>
+          <underline>false</underline>
          </font>
         </property>
         <property name="autoFillBackground">
@@ -2617,6 +2618,11 @@ color: rgb(255,255,255);</string>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <underline>false</underline>
+         </font>
+        </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
@@ -2624,7 +2630,7 @@ color: rgb(255,255,255);</string>
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Recent transactions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Recent Transactions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
@@ -6133,7 +6139,7 @@ color: rgb(255,255,255);</string>
      <rect>
       <x>10</x>
       <y>-9</y>
-      <width>171</width>
+      <width>281</width>
       <height>31</height>
      </rect>
     </property>
@@ -6260,6 +6266,7 @@ color: rgb(255,255,255);</string>
       <pointsize>11</pointsize>
       <weight>75</weight>
       <bold>true</bold>
+      <underline>false</underline>
       <kerning>false</kerning>
      </font>
     </property>
@@ -6273,7 +6280,7 @@ color: rgb(255,255,255);</string>
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>Statistics</string>
+     <string>Network Statistics</string>
     </property>
     <property name="textInteractionFlags">
      <set>Qt::NoTextInteraction</set>
