@@ -107,8 +107,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     createTrayIcon();
 
     QPalette p;
-    p.setColor(QPalette::Window, QColor(138, 138, 138));
-    p.setColor(QPalette::Text, QColor(255, 255, 255));
+    p.setColor(QPalette::Window, QColor(0, 0, 0));
+    p.setColor(QPalette::Text, QColor(0, 0, 0));
     setPalette(p);
 
     // Create tabs
@@ -373,7 +373,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(addressBookAction);
     toolbar->addAction(blockAction);
     toolbar->addAction(exportAction);
-    toolbar->setStyleSheet("color: rgb(138,138,138); background: transparent; color: rgb(255,255,255);");
+    toolbar->setStyleSheet("background: transparent; color: rgb(255,255,255);");
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
