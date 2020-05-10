@@ -2690,10 +2690,10 @@ color: rgb(255,255,255);</string>
         </colorrole>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -2717,19 +2717,19 @@ color: rgb(255,255,255);</string>
         </colorrole>
         <colorrole role="Base">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -2746,10 +2746,10 @@ color: rgb(255,255,255);</string>
         </colorrole>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -2773,19 +2773,19 @@ color: rgb(255,255,255);</string>
         </colorrole>
         <colorrole role="Base">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -2802,10 +2802,10 @@ color: rgb(255,255,255);</string>
         </colorrole>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -2829,19 +2829,19 @@ color: rgb(255,255,255);</string>
         </colorrole>
         <colorrole role="Base">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>178</red>
-           <green>178</green>
-           <blue>178</blue>
+          <color alpha="0">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
           </color>
          </brush>
         </colorrole>
@@ -2852,7 +2852,7 @@ color: rgb(255,255,255);</string>
       <enum>Qt::RightToLeft</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background: transparent;</string>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
