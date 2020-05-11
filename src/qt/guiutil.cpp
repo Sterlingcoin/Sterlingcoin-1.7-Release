@@ -456,7 +456,7 @@ void HelpMessageBox::showOrPrint()
 
 void SetGreyThemeQSS(QApplication& app)
 {
-    app.setStyleSheet("QTableView     { color: rgb(255,255,255);  gridline-color: rgb(90,104,118); }"
+    app.setStyleSheet("QTableView     { background: transparent; color: rgb(255,255,255);  gridline-color: rgb(90,104,118); }"
                       "QWidget        { background: url(:/images/big_ben); color: rgb(173,173,173); }"
                       "QCheckBox      { color: rgb(255,255,255); background-color: rgb(255,255,255); }"
                       "QComboBox      { background: transparent; color: rgb(255,255,255); }"
@@ -466,12 +466,12 @@ void SetGreyThemeQSS(QApplication& app)
                       "QMenu          {  color: rgb(255,255,255); }"
                       "QMenuBar::item { color: rgb(178,178,178); }"
                       "QMenu::item:selected { color:rgb(255,255,255); }"
-                      "QListView      {  color: rgb(255,255,255); }"
-                      "QTreeView      {  color: rgb(255,255,255); }"
-                      "QTreeView::item { color: rgb(173,173,173); }"
+                      "QListView      { background: transparent; color: rgb(255,255,255); }"
+                      "QTreeView      { background: transparent; color: rgb(255,255,255); }"
+                      "QTreeView::item { background: transparent; color: rgb(255,255,255); }"
                       "QTreeView::item:selected { border: 1px solid rgb(255,255,255); }"
                       "QHeaderView { background: transparent; color: rgb(255,255,255); }"
-                      "QHeaderView::section {  color: rgb(255,255,255); }"
+                      "QHeaderView::section { background: transparent; color: rgb(255,255,255); }"
                       "QToolBar       { background-color: rgb(178,178,178); border: none; }"
                       "QTextEdit      { background-color: rgb(178,178,178); color: rgb(0,0,0); }"
                       "QPlainTextEdit { background-color: rgb(178,178,178); color: rgb(0,0,0); }"
