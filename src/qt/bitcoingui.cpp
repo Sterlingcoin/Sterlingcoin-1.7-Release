@@ -80,8 +80,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     rpcConsole(0),
     nWeight(0)
 {
-    this->setMaximumSize(860,640);
-    resize(860, 640);
+    this->setFixedSize(860,640);
+    //resize(860, 640);
     setWindowTitle("Sterlingcoin v1.7");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/sterlingcoin"));
@@ -141,9 +141,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Status bar notification icons
     QFrame *frameBlocks = new QFrame();
     frameBlocks->setContentsMargins(0,0,0,0);
-    frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
-    frameBlocks->setFrameStyle(QFrame::Plain);
-    frameBlocks->setFrameShape(QFrame::NoFrame);
+    frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);;
+    frameBlocks->setFrameStyle(QFrame::NoFrame);
+    frameBlocks->setFrameShadow(QFrame::Plain);
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
@@ -160,6 +160,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addStretch();
+    frameBlocks->setStyleSheet("background: transparent;");
 
     if (GetBoolArg("-staking", true))
     {
@@ -175,6 +176,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBar = new QProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(false);
+    progressBar->setStyleSheet("background: transparent;");
 
     if (fUseGreyTheme)
     {
@@ -184,15 +186,16 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QString curStyle = qApp->style()->metaObject()->className();
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
-        progressBar->setStyleSheet("QProgressBar { border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
+        progressBar->setStyleSheet("QProgressBar { padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 red); border-radius: 7px; margin: 0px; }");
         appMenuBar->setStyleSheet("QMenuBar { background:transparent;}");
         }
     }
 
-    statusBar()->setStyleSheet("background: transparent;");
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
+    statusBar()->setStyleSheet("QStatusBar::item { border: none; } QStatusBar {background: transparent;padding: 10px;};");
+    statusBar()->setSizeGripEnabled(false);
 
     //syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
@@ -550,7 +553,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
         {
             progressBarLabel->setText(tr("Synchronizing with the Sterlingcoin network..."));
             progressBarLabel->setVisible(true);
-            progressBar->setStyleSheet("background: transparent;");
+            progressBar->setStyleSheet("background: transparent; color: rgb(255,255,255);");
             progressBar->setFormat(tr("~%n block(s) remaining...", "", nRemainingBlocks));
             progressBar->setMaximum(nTotalBlocks);
             progressBar->setValue(count);
