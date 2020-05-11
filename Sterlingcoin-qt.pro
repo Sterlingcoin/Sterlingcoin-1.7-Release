@@ -40,11 +40,11 @@ TARGET = $$fName1$$fName2$$VERSION
         BOOST_INCLUDE_PATH=C:/tools/boost/x86/include/boost-1_63
         BOOST_LIB_PATH=C:/tools/boost/x86/lib
 
-        BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
-        BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
+        BDB_INCLUDE_PATH=C:/tools/berkeley-db/db4/x86/include
+        BDB_LIB_PATH=C:/tools/berkeley-db/db4/x86/lib
 
-        OPENSSL_INCLUDE_PATH=C:/tools/openssl/x86/include
-        OPENSSL_LIB_PATH=C:/tools/openssl/x86/lib
+        OPENSSL_INCLUDE_PATH=C:/tools/openssl-1.1.1g/x86/include
+        OPENSSL_LIB_PATH=C:/tools/openssl-1.1.1g/x86/lib
 
         MINIUPNPC_INCLUDE_PATH=C:/deps/
         MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
@@ -52,7 +52,7 @@ TARGET = $$fName1$$fName2$$VERSION
 #        QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
 #        QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
 
-        LEVELDB_INCLUDE_PATH+="C:/tools/leveldb/leveldb/include" "C:/tools/leveldb/leveldb/helpers"
+        LEVELDB_INCLUDE_PATH+="C:/tools/leveldb/x86/include" "C:/tools/leveldb/x86/helpers"
         LEVELDB_LIB_PATH=C:/tools/leveldb/x86
         LIBS += "C:/tools/leveldb/x86/libleveldb.a" "C:/tools/leveldb/x86/libmemenv.a"
 
@@ -68,8 +68,8 @@ TARGET = $$fName1$$fName2$$VERSION
         BDB_INCLUDE_PATH=C:/tools/berkeley-db/db4/x64/include
         BDB_LIB_PATH=C:/tools/berkeley-db/db4/x64/lib
 
-        OPENSSL_INCLUDE_PATH=C:/tools/openssl/x64/include
-        OPENSSL_LIB_PATH=C:/tools/openssl/x64/lib
+        OPENSSL_INCLUDE_PATH=C:/tools/openssl-1.1.1g/x64/include
+        OPENSSL_LIB_PATH=C:/tools/openssl-1.1.1g/x64/lib
 
         MINIUPNPC_INCLUDE_PATH=C:/tools/miniupnpc
         MINIUPNPC_LIB_PATH=C:/tools/miniupnpc/miniupnpc
@@ -583,9 +583,10 @@ macx: {
 
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH $$LEVELDB_INCLUDE_PATH
-LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
+LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,) $$join(LEVELDB_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 LIBS += -lz
+
 # -lgdi32 has to happen after -lcrypto (see  #681)
 windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX \
@@ -593,7 +594,6 @@ LIBS += -lboost_system$$BOOST_LIB_SUFFIX \
     -lboost_program_options$$BOOST_LIB_SUFFIX \
     -lboost_thread$$BOOST_THREAD_LIB_SUFFIX \
     -lboost_chrono$$BOOST_LIB_SUFFIX
-
 
 contains(RELEASE, 1) {
     !windows:!macx {
