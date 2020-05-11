@@ -50,7 +50,7 @@
 #include <QProgressBar>
 #include <QStackedWidget>
 #include <QDateTime>
-#include <QMovie>
+// #include <QMovie>
 #include <QFileDialog>
 #include <QDesktopServices>
 #include <QTimer>
@@ -107,7 +107,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     createTrayIcon();
 
     QPalette p;
-    p.setColor(QPalette::Window, QColor(0, 0, 0));
+    p.setColor(QPalette::Window, QColor(0,0,0));
     p.setColor(QPalette::Text, QColor(0, 0, 0));
     setPalette(p);
 
@@ -184,8 +184,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QString curStyle = qApp->style()->metaObject()->className();
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
-        progressBar->setStyleSheet("QProgressBar { background-color: #8a8a8a; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
-        appMenuBar->setStyleSheet("QMenuBar { background-color: #8a8a8a; }");
+        progressBar->setStyleSheet("QProgressBar { border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
+        appMenuBar->setStyleSheet("QMenuBar { background:transparent;}");
         }
     }
 
@@ -194,7 +194,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
 
-    syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
+    //syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
     // Clicking on a transaction on the overview page simply sends you to transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), this, SLOT(gotoHistoryPage()));
@@ -373,7 +373,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(addressBookAction);
     toolbar->addAction(blockAction);
     toolbar->addAction(exportAction);
-    toolbar->setStyleSheet("background: transparent; color: rgb(255,255,255);");
+    toolbar->setStyleSheet("background: transparent;color:rgb(255,255,255)");
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
@@ -550,7 +550,8 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
         {
             progressBarLabel->setText(tr("Synchronizing with the Sterlingcoin network..."));
             progressBarLabel->setVisible(true);
-            progressBar->setFormat(tr("~%n block(s) remaining", "", nRemainingBlocks));
+            progressBar->setStyleSheet("background: transparent;");
+            progressBar->setFormat(tr("~%n block(s) remaining...", "", nRemainingBlocks));
             progressBar->setMaximum(nTotalBlocks);
             progressBar->setValue(count);
             progressBar->setVisible(true);
@@ -612,8 +613,8 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     else
     {
         tooltip = tr("Catching up...") + QString("<br>") + tooltip;
-        labelBlocksIcon->setMovie(syncIconMovie);
-        syncIconMovie->start();
+        labelBlocksIcon->setPixmap(QIcon(":/icons/notsynced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));;
+        // syncIconMovie->start();
 
         overviewPage->showOutOfSyncWarning(true);
     }
