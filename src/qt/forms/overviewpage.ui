@@ -888,10 +888,12 @@ color: rgb(255,255,255);</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <family>Lato</family>
+          <pointsize>13</pointsize>
           <weight>75</weight>
+          <italic>false</italic>
           <bold>true</bold>
-          <underline>false</underline>
+          <underline>true</underline>
          </font>
         </property>
         <property name="autoFillBackground">
@@ -901,7 +903,7 @@ color: rgb(255,255,255);</string>
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Balance</string>
+         <string>BALANCE</string>
         </property>
        </widget>
       </item>
@@ -2058,7 +2060,7 @@ color: rgb(255,255,255);</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="labelTotalText">
         <property name="palette">
          <palette>
@@ -2189,7 +2191,7 @@ color: rgb(255,255,255);</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QLabel" name="labelTotal">
         <property name="palette">
          <palette>
@@ -2332,6 +2334,28 @@ color: rgb(255,255,255);</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="Line" name="line">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>215</width>
+          <height>1</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(129,105,117);</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -2620,7 +2644,10 @@ color: rgb(255,255,255);</string>
        <widget class="QLabel" name="label_4">
         <property name="font">
          <font>
-          <underline>false</underline>
+          <family>Lato</family>
+          <pointsize>9</pointsize>
+          <italic>false</italic>
+          <underline>true</underline>
          </font>
         </property>
         <property name="autoFillBackground">
@@ -2630,7 +2657,7 @@ color: rgb(255,255,255);</string>
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;Recent Transactions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;RECENT TRANSACTIONS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
@@ -3318,10 +3345,10 @@ color: rgb(255,255,255);</string>
    <widget class="QLabel" name="diffBox2">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>85</y>
-      <width>151</width>
-      <height>17</height>
+      <x>230</x>
+      <y>82</y>
+      <width>191</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="palette">
@@ -3522,10 +3549,10 @@ color: rgb(255,255,255);</string>
    <widget class="QLabel" name="heightBox">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>60</y>
-      <width>151</width>
-      <height>17</height>
+      <x>230</x>
+      <y>56</y>
+      <width>191</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="palette">
@@ -3927,7 +3954,7 @@ color: rgb(255,255,255);</string>
      <rect>
       <x>10</x>
       <y>170</y>
-      <width>181</width>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
@@ -4113,10 +4140,10 @@ color: rgb(255,255,255);</string>
    <widget class="QLabel" name="connectionBox">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>30</y>
-      <width>51</width>
-      <height>17</height>
+      <x>230</x>
+      <y>27</y>
+      <width>91</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="palette">
@@ -4317,10 +4344,10 @@ color: rgb(255,255,255);</string>
    <widget class="QLabel" name="maxBox">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>230</y>
-      <width>161</width>
-      <height>17</height>
+      <x>230</x>
+      <y>216</y>
+      <width>201</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="palette">
@@ -4521,10 +4548,10 @@ color: rgb(255,255,255);</string>
    <widget class="QLabel" name="minBox">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>200</y>
-      <width>151</width>
-      <height>17</height>
+      <x>230</x>
+      <y>196</y>
+      <width>191</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="palette">
@@ -4725,10 +4752,10 @@ color: rgb(255,255,255);</string>
    <widget class="QLabel" name="volumeBox">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>170</y>
-      <width>161</width>
-      <height>17</height>
+      <x>230</x>
+      <y>166</y>
+      <width>201</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="palette">
@@ -5128,10 +5155,10 @@ color: rgb(255,255,255);</string>
    <widget class="QLabel" name="localBox">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>140</y>
-      <width>191</width>
-      <height>17</height>
+      <x>230</x>
+      <y>137</y>
+      <width>201</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="palette">
@@ -6263,10 +6290,12 @@ color: rgb(255,255,255);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <family>Lato</family>
+      <pointsize>13</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
-      <underline>false</underline>
+      <underline>true</underline>
       <kerning>false</kerning>
      </font>
     </property>
@@ -6280,7 +6309,7 @@ color: rgb(255,255,255);</string>
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>Network Statistics</string>
+     <string>NETWORK STATISTICS</string>
     </property>
     <property name="textInteractionFlags">
      <set>Qt::NoTextInteraction</set>
@@ -6488,9 +6517,9 @@ color: rgb(255,255,255);</string>
    <widget class="QLabel" name="diffBox2_2">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>230</x>
       <y>110</y>
-      <width>151</width>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
