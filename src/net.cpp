@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2014-2017 The Sterlingcoin developers
+// Copyright (c) 2014-2020 The Sterlingcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1120,7 +1120,8 @@ void MapPort()
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
     {"seed1.sterlingcoin.org.uk", "seed1.sterlingcoin.org.uk"},
-    {"seed2.sterlingcoin.org.uk", "seed2.sterlingcoin.org.uk"},
+    {"seed2.sterlingcoin.org.uk", "seed2.sterlingcoin.org.uk"},    
+    {"seed3.sterlingcoin.org.uk", "seed3.sterlingcoin.org.uk"},
     {"cwi-seed01.sterlingcoin.org", "cwi-seed01.sterlingcoin.org"},
     {"cwi-seed02.sterlingcoin.org", "cwi-seed02.sterlingcoin.org"},
     {"cwi-seed03.sterlingcoin.org", "cwi-seed03.sterlingcoin.org"},
