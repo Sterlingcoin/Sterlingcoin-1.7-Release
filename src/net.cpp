@@ -1119,9 +1119,9 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    {"seed1.sterlingcoin.org.uk", "seed1.sterlingcoin.org.uk"},
-    {"seed2.sterlingcoin.org.uk", "seed2.sterlingcoin.org.uk"},    
-    {"seed3.sterlingcoin.org.uk", "seed3.sterlingcoin.org.uk"},
+    {"seed1.sterlingcoin.org", "seed1.sterlingcoin.org"},
+    {"seed2.sterlingcoin.org", "seed2.sterlingcoin.org"},    
+    {"seed3.sterlingcoin.org", "seed3.sterlingcoin.org"},
     {"cwi-seed01.sterlingcoin.org", "cwi-seed01.sterlingcoin.org"},
     {"cwi-seed02.sterlingcoin.org", "cwi-seed02.sterlingcoin.org"},
     {"cwi-seed03.sterlingcoin.org", "cwi-seed03.sterlingcoin.org"},
