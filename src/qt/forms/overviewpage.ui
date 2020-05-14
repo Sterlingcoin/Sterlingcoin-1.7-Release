@@ -889,7 +889,7 @@ color: rgb(255,255,255);</string>
         <property name="font">
          <font>
           <family>Lato</family>
-          <pointsize>13</pointsize>
+          <pointsize>12</pointsize>
           <weight>75</weight>
           <italic>false</italic>
           <bold>true</bold>
@@ -6291,7 +6291,7 @@ color: rgb(255,255,255);</string>
     <property name="font">
      <font>
       <family>Lato</family>
-      <pointsize>13</pointsize>
+      <pointsize>12</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
