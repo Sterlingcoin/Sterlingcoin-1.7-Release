@@ -1,4 +1,4 @@
-![Alt text](src/qt/res/images/Wallet_Logo.png)
+![Alt text](src/qt/res/images/splash.png)
 
 Sterlingcoin Version 1.7.0.0 Development
 
