@@ -480,7 +480,7 @@ void SetGreyThemeQSS(QApplication& app)
                       "QTabBar::tab   { background: transparent; border: 1px solid rgb(90,104,118); border-bottom: none; padding: 5px; }"
                       "QTabBar::tab:selected  { color: rgb(255,255,255); }"
                       "QTabBar::tab:!selected { color: rgb(178,178,178); margin-top: 2px; }"
-                      "QToolTip       {background: rgb(0,0,0); color: rgb(255,255,255); border:1px solid white;}"
+                      "QToolTip       {background: rgb(0,0,0); color: rgb(255,255,255); border:none;}"
                       );
 }
 
