@@ -1,6 +1,6 @@
 ![Alt text](src/qt/res/images/splash.png)
 
-Sterlingcoin Version 1.7.0.0 Development
+Sterlingcoin Version 1.7.0.2 Development
 
 Sterlingcoin integration/staging tree
 ================================
