@@ -15,6 +15,7 @@ src/build.h
 *.qm
 Makefile
 sterlingcoin-qt
+Sterlingcoin-v1.7
 #resources cpp
 qrc_*.cpp
 #qt creator
