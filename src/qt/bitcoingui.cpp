@@ -90,6 +90,14 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
+        
+#if QT_VERSION > 0x050100
+    // Generate high-dpi pixmaps
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
+#if QT_VERSION >= 0x050600
+    QGuiApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
+#endif
 
     // Accept D&D of URIs
     setAcceptDrops(true);
