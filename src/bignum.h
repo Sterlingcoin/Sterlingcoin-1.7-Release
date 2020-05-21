@@ -76,8 +76,8 @@ private:
             throw bignum_error("CBigNum::init() : BN_new() returned NULL");
     }
 
-    BIGNUM* get() { return this; }
-    const BIGNUM* cget() const { return this; }
+    BIGNUM* get() { return self; }
+    const BIGNUM* cget() const { return self; }
 
 CBigNum()
     {
@@ -488,7 +488,7 @@ CBigNum()
 #if OPENSSL_VERSION_NUMBER < 0x10100000
             BN_set_word(self, nWord);
 #else
-            BN_set_word(this->pbn, nWord))
+            BN_set_word(this->pbn, nWord);
 #endif            
         }
         else
@@ -496,7 +496,7 @@ CBigNum()
 #if OPENSSL_VERSION_NUMBER < 0x10100000
             BN_set_word(self, nWord);
 #else
-            BN_set_word(this->pbn, nWord))
+            BN_set_word(this->pbn, nWord);
 #endif
 #if OPENSSL_VERSION_NUMBER < 0x10100000                
             BN_lshift(self, self, 8*(nSize-3));
@@ -507,7 +507,7 @@ CBigNum()
 #if OPENSSL_VERSION_NUMBER < 0x10100000         
         BN_set_negative(self, fNegative);
 #else
-        BN_is_negative(this->pbn, fNegative);
+        BN_is_negative(this->pbn);
 #endif
         return *this;
     }
