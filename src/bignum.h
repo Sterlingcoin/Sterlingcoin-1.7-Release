@@ -130,7 +130,7 @@ CBigNum()
 
     BIGNUM *operator &() const
     {
-        return const this;
+        return (*this);
     }
 
     //CBigNum(char n) is not portable.  Use 'signed char' or 'unsigned char'.
