@@ -75,7 +75,7 @@ bool CCrypter::Encrypt(const CKeyingMaterial& vchPlaintext, std::vector<unsigned
 #else
     EVP_CIPHER_CTX *ctx;
 #endif
-    if (!ctx) return false;
+    //if (!ctx) return false;
 
     bool fOk = true;
 
