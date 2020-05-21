@@ -64,9 +64,10 @@ class CBigNum
 public:
 #if OPENSSL_VERSION_NUMBER >= 0x10100000
     BIGNUM* pbn;
+#else
+    BIGNUM *self = NULL;
 #endif
 private:
-    BIGNUM *self = NULL;
 
     void init()
     {
