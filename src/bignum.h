@@ -531,9 +531,9 @@ CBigNum()
         {
             CBigNum bn;
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-            BN_rshift(this, this, unsigned int(8*(nSize-3)));
+            BN_rshift(this, this, uint(8*(nSize-3)));
 #else
-            BN_rshift(this->pbn, this, unsigned int(8*(nSize-3)));
+            BN_rshift(this->pbn, this, uint(8*(nSize-3)));
 #endif
 #if OPENSSL_VERSION_NUMBER < 0x10100000
                 nCompact = BN_get_word(this);
