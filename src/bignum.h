@@ -501,7 +501,7 @@ CBigNum()
 #if OPENSSL_VERSION_NUMBER < 0x10100000                
             BN_lshift(self, self, 8*(nSize-3));
 #else
-            BN_lshift(this->pbn, this->pbn, 8*(nSize-3))
+            BN_lshift(this->pbn, this->pbn, 8*(nSize-3));
 #endif                
         }
 #if OPENSSL_VERSION_NUMBER < 0x10100000         
@@ -624,8 +624,8 @@ CBigNum()
         }
 #if OPENSSL_VERSION_NUMBER < 0x10100000
         if (BN_is_negative(self))
-            #else
-        if (BN_is_negative(self->pbn))
+#else
+        if (BN_is_negative(this->pbn))
 #endif
             str += "-";
         reverse(str.begin(), str.end());
