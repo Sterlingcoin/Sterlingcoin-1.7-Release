@@ -106,7 +106,7 @@ inline bool DecodeBase58(const char* psz, std::vector<unsigned char>& vchRet)
         if (!BN_mul(&bn, &bn, &bn58, pctx))
 #else
         if (!BN_mul(bn.pbn, bn.pbn, bn58.pbn, pctx))
-#endif)
+#endif
             throw bignum_error("DecodeBase58 : BN_mul failed");
         bn += bnChar;
     }
