@@ -534,7 +534,7 @@ CBigNum()
         else
         {
             CBigNum bn;
-            unsigned int nWordSize = 8*(nSize-3);
+            int nWordSize = 8*(nSize-3);
 #if OPENSSL_VERSION_NUMBER < 0x10100000
             BN_rshift(this, this, nWordSize);
 #else
