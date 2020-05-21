@@ -553,9 +553,9 @@ CBigNum()
         }
         nCompact |= nSize << 24;
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-        nCompact |= (BN_is_negative(this)) ? 0x00800000 : 0);
+        nCompact |= if (BN_is_negative(this)) ? 0x00800000 : 0);
 #else
-        nCompact |= (BN_is_negative(this->pbn) ? 0x00800000 : 0);
+        nCompact |= if (BN_is_negative(this->pbn) ? 0x00800000 : 0);
 #endif
         return nCompact;
     }
