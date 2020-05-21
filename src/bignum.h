@@ -228,7 +228,7 @@ CBigNum()
         return BN_get_word(this);
 #else
         return BN_get_word(this->pbn);
-#endif;
+#endif
     }
 
     unsigned int getuint() const
