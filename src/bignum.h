@@ -76,10 +76,6 @@ private:
             throw bignum_error("CBigNum::init() : BN_new() returned NULL");
     }
 
-public:
-#if OPENSSL_VERSION_NUMBER >= 0x10100000
-    BIGNUM* pbn;
-#endif
     BIGNUM* get() { return this; }
     const BIGNUM* cget() const { return this; }
 
