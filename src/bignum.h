@@ -131,9 +131,9 @@ CBigNum()
     BIGNUM *operator &() const
     {
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-        return (BN_copy(this));
+        return this;
 #else
-        return (BN_copy(this->pbn));
+        return this->pbn;
 #endif
     }
 
