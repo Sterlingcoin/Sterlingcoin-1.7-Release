@@ -92,8 +92,8 @@ CBigNum()
     CBigNum(const CBigNum& b)
     {
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-        init();
-        if (!BN_copy(this, b.cget()))
+        BN_init(this);
+        if (!BN_copy(this, &b))
 #else
         this->pbn = BN_new();
         if (!BN_copy(this->pbn, b.pbn))
@@ -131,7 +131,7 @@ CBigNum()
     BIGNUM *operator &() const
     {
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-        return this;
+        return self;
 #else
         return this->pbn;
 #endif
@@ -535,9 +535,9 @@ CBigNum()
         {
             CBigNum bn;
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-            BN_rshift(this, this, int(8*(nSize-3)));
+            BN_rshift(this, this, &int(8*(nSize-3)));
 #else
-            BN_rshift(this->pbn, this->pbn, int(8*(nSize-3)));
+            BN_rshift(this->pbn, this->pbn, &int(8*(nSize-3)));
 #endif
 #if OPENSSL_VERSION_NUMBER < 0x10100000
                 nCompact = BN_get_word(this);
