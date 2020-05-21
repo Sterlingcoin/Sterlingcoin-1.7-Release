@@ -130,7 +130,11 @@ CBigNum()
 
     BIGNUM *operator &() const
     {
-        return (*this);
+#if OPENSSL_VERSION_NUMBER < 0x10100000
+        return (BN_copy(this))
+#else
+        return (BN_copy(this->pbn))
+#endif
     }
 
     //CBigNum(char n) is not portable.  Use 'signed char' or 'unsigned char'.
