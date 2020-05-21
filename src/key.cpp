@@ -1,4 +1,5 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2014-2020 The Sterlingcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -64,6 +65,11 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY *eckey, ECDSA_SIG *ecsig, const unsigned ch
 
     int ret = 0;
     BN_CTX *ctx = NULL;
+    
+#if OPENSSL_VERSION_NUMBER >= 0x10100000
+    const BIGNUM *pr = NULL;
+    const BIGNUM *ps = NULL;
+#endif
 
     BIGNUM *x = NULL;
     BIGNUM *e = NULL;
@@ -87,10 +93,11 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY *eckey, ECDSA_SIG *ecsig, const unsigned ch
     x = BN_CTX_get(ctx);
     if (!BN_copy(x, order)) { ret=-1; goto err; }
     if (!BN_mul_word(x, i)) { ret=-1; goto err; }
-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
+#if OPENSSL_VERSION_NUMBER < 0x10100000
     if (!BN_add(x, x, ecsig->r)) { ret=-1; goto err; }
 #else
-    if (!BN_add(x, x, sig_r)) { ret=-1; goto err; }
+    ECDSA_SIG_get0(ecsig, &pr, &ps);
+    if (!BN_add(x, x, pr)) { ret=-1; goto err; }
 #endif
     field = BN_CTX_get(ctx);
     if (!EC_GROUP_get_curve_GFp(group, field, NULL, NULL, ctx)) { ret=-2; goto err; }
