@@ -70,19 +70,18 @@ bool CCrypter::Encrypt(const CKeyingMaterial& vchPlaintext, std::vector<unsigned
     int nLen = vchPlaintext.size();
     int nCLen = nLen + AES_BLOCK_SIZE, nFLen = 0;
     vchCiphertext = std::vector<unsigned char> (nCLen);
-
-    EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
+#if OPENSSL_VERSION_NUMBER < 0x10100000
+    EVP_CIPHER_CTX ctx;
+#else
+    EVP_CIPHER_CTX *ctx;
+#endif
     if (!ctx) return false;
 
     bool fOk = true;
 
     //EVP_CIPHER_CTX_init(ctx);
     
-#if OPENSSL_VERSION_NUMBER < 0x10100000
-    EVP_CIPHER_CTX ctx;
-#else
-    EVP_CIPHER_CTX *ctx;
-#endif
+
     
 #if OPENSSL_VERSION_NUMBER < 0x10100000
     EVP_CIPHER_CTX_init(&ctx);
