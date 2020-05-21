@@ -539,7 +539,7 @@ CBigNum()
             BN_rshift(this->pbn, self, 8*(nSize-3));
 #endif
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-                nCompact = BN_get_word(this)
+                nCompact = BN_get_word(this);
 #else
                 nCompact = BN_get_word(this->pbn);
 #endif                
@@ -555,7 +555,7 @@ CBigNum()
 #if OPENSSL_VERSION_NUMBER < 0x10100000
         nCompact |= if (BN_is_negative(this)) ? 0x00800000 : 0);
 #else
-        nCompact |= if (BN_is_negative(this->pbn) ? 0x00800000 : 0)
+        nCompact |= if (BN_is_negative(this->pbn) ? 0x00800000 : 0);
 #endif
         return nCompact;
     }
