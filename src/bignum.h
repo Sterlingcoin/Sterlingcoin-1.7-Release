@@ -130,7 +130,7 @@ CBigNum()
 
     BIGNUM *operator &() const
     {
-    return self;
+    return this;
     }
 
     //CBigNum(char n) is not portable.  Use 'signed char' or 'unsigned char'.
@@ -531,9 +531,9 @@ CBigNum()
         {
             CBigNum bn;
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-            BN_rshift(bn.get(), self, 8*(nSize-3));
+            BN_rshift(this, this, 8*(nSize-3));
 #else
-            BN_rshift(this->pbn, self, 8*(nSize-3));
+            BN_rshift(this->pbn, this, 8*(nSize-3));
 #endif
 #if OPENSSL_VERSION_NUMBER < 0x10100000
                 nCompact = BN_get_word(this);
