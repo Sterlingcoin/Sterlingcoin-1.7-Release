@@ -505,6 +505,7 @@ CBigNum()
         BN_set_negative(self, fNegative);
 #else
         BN_is_negative(this->pbn, fNegative);
+#endif
         return *this;
     }
 
@@ -521,7 +522,7 @@ CBigNum()
             nCompact = BN_get_word(self) << 8*(3-nSize);
 #else
             nCompact = BN_get_word(this->pbn) << 8*(3-nSize);
-#endi
+#endif
         else
         {
             CBigNum bn;
@@ -1054,5 +1055,3 @@ inline bool operator>(const CBigNum& a, const CBigNum& b)  { return (BN_cmp(a.pb
 inline std::ostream& operator<<(std::ostream &strm, const CBigNum &b) { return strm << b.ToString(10); }
 
 typedef CBigNum Bignum;
-
-#endif
