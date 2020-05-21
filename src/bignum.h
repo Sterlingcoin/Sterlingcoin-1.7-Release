@@ -67,7 +67,7 @@ public:
 #else
     BIGNUM *self = NULL;
 #endif
-private:
+/* private:
 
     void init()
     {
@@ -77,8 +77,8 @@ private:
             throw bignum_error("CBigNum::init() : BN_new() returned NULL");
     }
 
-    BIGNUM* get() { return self; }
-    const BIGNUM* cget() const { return self; }
+    BIGNUM* get() { return this; }
+    const BIGNUM* cget() const { return this; } */
 
 CBigNum()
     {
