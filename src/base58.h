@@ -198,6 +198,14 @@ protected:
         vchData.clear();
     }
 
+    ~CBase58Data()
+    {
+        // zero the memory, as it may contain sensitive data
+        if (!vchData.empty())
+            memset(&vchData[0], 0, vchData.size());
+    }
+
+
     void SetData(int nVersionIn, const void* pdata, size_t nSize)
     {
         nVersion = nVersionIn;
