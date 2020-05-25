@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Bitcoin Developers
 // Copyright (c) 2014-2020 The Sterlingcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -64,23 +64,8 @@ class CBigNum
 public:
 #if OPENSSL_VERSION_NUMBER >= 0x10100000
     BIGNUM* pbn;
-#else
-    BIGNUM *self = NULL;
 #endif
-/* private:
-
-    void init()
-    {
-        if (self) BN_clear_free(self);
-        self = BN_new();
-        if (!self)
-            throw bignum_error("CBigNum::init() : BN_new() returned NULL");
-    }
-
-    BIGNUM* get() { return this; }
-    const BIGNUM* cget() const { return this; } */
-
-CBigNum()
+    CBigNum()
     {
 #if OPENSSL_VERSION_NUMBER < 0x10100000
         BN_init(this);
@@ -125,15 +110,6 @@ CBigNum()
         BN_clear_free(this);
 #else
         BN_clear_free(this->pbn);
-#endif
-    }
-
-    BIGNUM *operator &() const
-    {
-#if OPENSSL_VERSION_NUMBER < 0x10100000
-        return self;
-#else
-        return this->pbn;
 #endif
     }
 
@@ -271,10 +247,7 @@ CBigNum()
 
         if (sn < (int64_t)0)
         {
-            // Since the minimum signed integer cannot be represented as positive so long as its type is 
-            // signed, and it's not well-defined what happens if you make it unsigned before negating it,
-            // we instead increment the negative integer by 1, convert it, then increment the (now positive)
-            // unsigned integer by 1 to compensate
+            // Since the minimum signed integer cannot be represented as positive so long as its type is signed, and it's not well-defined what happens if you make it unsigned before negating it, we instead increment the negative integer by 1, convert it, then increment the (now positive) unsigned integer by 1 to compensate
             n = -(sn + 1);
             ++n;
             fNegative = true;
@@ -421,6 +394,7 @@ CBigNum()
         return n;
     }
 
+
     void setvch(const std::vector<unsigned char>& vch)
     {
         std::vector<unsigned char> vch2(vch.size() + 4);
@@ -460,59 +434,18 @@ CBigNum()
         return vch;
     }
 
-    // The "compact" format is a representation of a whole
-    // number N using an unsigned 32bit number similar to a
-    // floating point format.
-    // The most significant 8 bits are the unsigned exponent of base 256.
-    // This exponent can be thought of as "number of bytes of N".
-    // The lower 23 bits are the mantissa.
-    // Bit number 24 (0x800000) represents the sign of N.
-    // N = (-1^sign) * mantissa * 256^(exponent-3)
-    //
-    // Satoshi's original implementation used BN_bn2mpi() and BN_mpi2bn().
-    // MPI uses the most significant bit of the first byte as sign.
-    // Thus 0x1234560000 is compact (0x05123456)
-    // and  0xc0de000000 is compact (0x0600c0de)
-    // (0x05c0de00) would be -0x40de000000
-    //
-    // Bitcoin only uses this "compact" format for encoding difficulty
-    // targets, which are unsigned 256bit quantities.  Thus, all the
-    // complexities of the sign bit and using base 256 are probably an
-    // implementation accident.
-    //
-    // This implementation directly uses shifts instead of going
-    // through an intermediate MPI representation.
     CBigNum& SetCompact(unsigned int nCompact)
     {
         unsigned int nSize = nCompact >> 24;
-        bool fNegative     =(nCompact & 0x00800000) != 0;
-        unsigned int nWord = nCompact & 0x007fffff;
-        if (nSize <= 3)
-        {
-            nWord >>= 8*(3-nSize);
+        std::vector<unsigned char> vch(4 + nSize);
+        vch[3] = nSize;
+        if (nSize >= 1) vch[4] = (nCompact >> 16) & 0xff;
+        if (nSize >= 2) vch[5] = (nCompact >> 8) & 0xff;
+        if (nSize >= 3) vch[6] = (nCompact >> 0) & 0xff;
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-            BN_set_word(self, nWord);
+        BN_mpi2bn(&vch[0], vch.size(), this);
 #else
-            BN_set_word(this->pbn, nWord);
-#endif            
-        }
-        else
-        {
-#if OPENSSL_VERSION_NUMBER < 0x10100000
-            BN_set_word(self, nWord);
-#else
-            BN_set_word(this->pbn, nWord);
-#endif
-#if OPENSSL_VERSION_NUMBER < 0x10100000                
-            BN_lshift(self, self, 8*(nSize-3));
-#else
-            BN_lshift(this->pbn, this->pbn, 8*(nSize-3));
-#endif                
-        }
-#if OPENSSL_VERSION_NUMBER < 0x10100000         
-        BN_set_negative(self, fNegative);
-#else
-        BN_is_negative(this->pbn);
+        BN_mpi2bn(&vch[0], vch.size(), this->pbn);
 #endif
         return *this;
     }
@@ -524,41 +457,17 @@ CBigNum()
 #else
         unsigned int nSize = BN_bn2mpi(this->pbn, NULL);
 #endif
-        unsigned int nCompact = 0;
-        if (nSize <= 3)
+        std::vector<unsigned char> vch(nSize);
+        nSize -= 4;
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-            nCompact = BN_get_word(this) << 8*(3-nSize);
+        BN_bn2mpi(this, &vch[0]);
 #else
-            nCompact = BN_get_word(this->pbn) << 8*(3-nSize);
+        BN_bn2mpi(this->pbn, &vch[0]);
 #endif
-        else
-        {
-            CBigNum bn;
-            int nWordSize = 8*(nSize-3);
-#if OPENSSL_VERSION_NUMBER < 0x10100000
-            BN_rshift(this, this, nWordSize);
-#else
-            BN_rshift(this->pbn, this->pbn, nWordSize);
-#endif
-#if OPENSSL_VERSION_NUMBER < 0x10100000
-                nCompact = BN_get_word(this);
-#else
-                nCompact = BN_get_word(this->pbn);
-#endif                
-        }
-        // The 0x00800000 bit denotes the sign.
-        // Thus, if it is already set, divide the mantissa by 256 and increase the exponent.
-        if (nCompact & 0x00800000)
-        {
-            nCompact >>= 8;
-            nSize++;
-        }
-        nCompact |= nSize << 24;
-#if OPENSSL_VERSION_NUMBER < 0x10100000
-        nCompact |= (BN_is_negative(self) ? 0x00800000 : 0);
-#else
-        nCompact |= (BN_is_negative(this->pbn) ? 0x00800000 : 0);
-#endif
+        unsigned int nCompact = nSize << 24;
+        if (nSize >= 1) nCompact |= (vch[4] << 16);
+        if (nSize >= 2) nCompact |= (vch[5] << 8);
+        if (nSize >= 3) nCompact |= (vch[6] << 0);
         return nCompact;
     }
 
@@ -599,14 +508,14 @@ CBigNum()
         CBigNum bn0 = 0;
         std::string str;
         CBigNum bn = *this;
-#if OPENSSL_VERSION_NUMBER < 0x10100000        
+#if OPENSSL_VERSION_NUMBER < 0x10100000
         BN_set_negative(&bn, false);
 #else
         BN_set_negative(bn.pbn, false);
 #endif
         CBigNum dv;
         CBigNum rem;
-#if OPENSSL_VERSION_NUMBER < 0x10100000        
+#if OPENSSL_VERSION_NUMBER < 0x10100000
         if (BN_cmp(&bn, &bn0) == 0)
 #else
         if (BN_cmp(bn.pbn, bn0.pbn) == 0)
@@ -629,7 +538,7 @@ CBigNum()
             str += "0123456789abcdef"[c];
         }
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-        if (BN_is_negative(self))
+        if (BN_is_negative(this))
 #else
         if (BN_is_negative(this->pbn))
 #endif
@@ -1020,9 +929,9 @@ inline const CBigNum operator%(const CBigNum& a, const CBigNum& b)
     CAutoBN_CTX pctx;
     CBigNum r;
 #if OPENSSL_VERSION_NUMBER < 0x10100000
-    if (!BN_mod(&r, &a, &b, pctx))
+    if (!BN_nnmod(&r, &a, &b, pctx))
 #else
-    if (!BN_mod(r.pbn, a.pbn, b.pbn, pctx))
+    if (!BN_nnmod(r.pbn, a.pbn, b.pbn, pctx))
 #endif
         throw bignum_error("CBigNum::operator% : BN_div failed");
     return r;
@@ -1046,6 +955,7 @@ inline const CBigNum operator>>(const CBigNum& a, unsigned int shift)
     r >>= shift;
     return r;
 }
+
 #if OPENSSL_VERSION_NUMBER < 0x10100000
 inline bool operator==(const CBigNum& a, const CBigNum& b) { return (BN_cmp(&a, &b) == 0); }
 inline bool operator!=(const CBigNum& a, const CBigNum& b) { return (BN_cmp(&a, &b) != 0); }
@@ -1061,8 +971,9 @@ inline bool operator>=(const CBigNum& a, const CBigNum& b) { return (BN_cmp(a.pb
 inline bool operator<(const CBigNum& a, const CBigNum& b)  { return (BN_cmp(a.pbn, b.pbn) < 0); }
 inline bool operator>(const CBigNum& a, const CBigNum& b)  { return (BN_cmp(a.pbn, b.pbn) > 0); }
 #endif
+
 inline std::ostream& operator<<(std::ostream &strm, const CBigNum &b) { return strm << b.ToString(10); }
 
 typedef CBigNum Bignum;
 
-#endif
+#endif // BIGNUM_H
