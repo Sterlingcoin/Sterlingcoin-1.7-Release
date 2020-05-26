@@ -82,7 +82,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 {
     this->setFixedSize(860,640);
     //resize(860, 640);
-    setWindowTitle("Sterlingcoin v1.7");
+    setWindowTitle("Sterlingcoin v1.7.1");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/sterlingcoin"));
     setWindowIcon(QIcon(":icons/sterlingcoin"));
