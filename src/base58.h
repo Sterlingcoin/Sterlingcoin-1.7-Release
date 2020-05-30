@@ -234,7 +234,10 @@ public:
         vchData.resize(vchTemp.size() - 1);
         if (!vchData.empty())
             memcpy(&vchData[0], &vchTemp[1], vchData.size());
+        memset(&vchTemp[0], 0, vchTemp.size());
+#if OPENSSL_VERSION_NUMBER >= 0x10100000        
         OPENSSL_cleanse(&vchTemp[0], vchData.size());
+#endif        
         return true;
     }
 
