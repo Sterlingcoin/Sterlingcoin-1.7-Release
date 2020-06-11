@@ -53,6 +53,7 @@
 // #include <QMovie>
 #include <QFileDialog>
 #include <QDesktopServices>
+#include <QDesktopWidget>
 #include <QTimer>
 #include <QDragEnterEvent>
 #include <QUrl>
@@ -81,7 +82,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     nWeight(0)
 {
     this->setFixedSize(860,640);
-    //resize(860, 640);
+    this->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, this->size(), QApplication::desktop()->screenGeometry()));
+
     setWindowTitle("Sterlingcoin v1.7.1");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/sterlingcoin"));
