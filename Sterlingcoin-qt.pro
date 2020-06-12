@@ -222,6 +222,17 @@ NO_LEVELDB=1
     # Gross ugly hack that depends on qmake internals, unfortunately there is no other way to do it.
     QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) clean
 }
+# linux make leveldb override
+!windows:!macx {
+    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
+        genleveldb.target = $$PWD/src/leveldb/libleveldb.a
+    genleveldb.depends = FORCE
+    PRE_TARGETDEPS += $$PWD/src/leveldb/libleveldb.a
+    QMAKE_EXTRA_TARGETS += genleveldb
+    # Gross ugly hack that depends on qmake internals, unfortunately there is no other way to do it.
+    QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) clean
+}
+
 # regenerate src/build.h
 !windows|contains(USE_BUILD_INFO, 1) {
     genbuild.depends = FORCE
